@@ -1,0 +1,9 @@
+npm install -g ionic
+ionic start worki blank
+ionic cordova prepare android
+npm i ngx-qrcode2
+ionic cordova plugin add cordova-plugin-cszbar  
+npm install @ionic-native/zbar
+npm install firebase @angular/fire  -- save
+ionic cordova plugin add cordova-plugin-firebase
+npm install @ionic-native/firebase
