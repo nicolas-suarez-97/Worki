@@ -1,0 +1,20 @@
+<ion-content  padding >
+  <!--<div class="container">-->
+    <ion-img [src]="imgUrl" class="logo"></ion-img>
+    
+    <ion-item lines="none">      
+      <ion-input class="input" required type="text" placeholder="Usuario" [(ngModel)]="user" clearInput></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-input class="input"  required type="text" placeholder="Contraseña" [(ngModel)]="pws" clear-input="true" type="password"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button expand="block" (click)="login()">
+      Entrar
+    </ion-button>
+    <ion-button fill="outline" expand="block" routerLink="/registry" routerDirection="forward">
+      Registrate
+    </ion-button>
+  <!--</div>-->
+  
+</ion-content>

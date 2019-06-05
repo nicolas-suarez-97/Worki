@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>        
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content padding >
+  <ion-title style="text-align: center">Bienvenido a Worki</ion-title>
+  <ion-item lines="none">
+    <ion-textarea value="A continuación encontraras un formulario básico para poder registrarte y trabajar con nosotros." disabled style="text-align:center; height: 100px;"></ion-textarea>
+  </ion-item>
+  <br>
+  <ion-item lines="none">
+    <ion-label position="stacked">Nombre:</ion-label>
+    <ion-input class="input" type="text" required [(ngModel)]="user.name" placeholder="Ej: Rodrigo"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked">Contraseña:</ion-label>
+    <ion-input class="input" type="password" required [(ngModel)]="user.password" placeholder="Ej: 123456789"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked">Documento:</ion-label>
+    <ion-input class="input" type="text" required [(ngModel)]="user.document" placeholder="Ej: 1040 753 951"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked">Celular:</ion-label>
+    <ion-input class="input" type="number" required [(ngModel)]="user.cellphone" placeholder="Ej: 314 312 5678"></ion-input>
+  </ion-item>  
+</ion-content>
+
+<ion-footer>
+    <ion-button expand="block" (click)="register()">Iniciar</ion-button>  
+</ion-footer>

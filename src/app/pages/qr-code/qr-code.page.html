@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
+        <ion-back-button defaultHref="/home"></ion-back-button>
       </ion-buttons>
     <ion-title></ion-title>
   </ion-toolbar>
@@ -23,15 +23,16 @@
   </ion-button>
 
   <ion-card *ngIf="createdCode">
-    <ngx-qrcode [(qrc-value)]="createdCode" ></ngx-qrcode>
-    <ion-card-content>
+      <ngx-qrcode [(qrc-value)]="createdCode" ></ngx-qrcode>
+    <!--<ion-card-content>
       <p>Value: {{ createdCode}} </p>
-    </ion-card-content>
+    </ion-card-content>-->
   </ion-card>
 
-  <ion-card *ngIf="scannedCode">        
+  <ion-card *ngIf="scannedCode">    
+    <ion-card-header>{{user.name}}</ion-card-header>    
     <ion-card-content>
-      Result from Scan: {{ scannedCode }}
+      Result from Scan: {{ scannedCode }} 
     </ion-card-content>
   </ion-card>
 </ion-content>

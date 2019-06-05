@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskI } from '../models/task.interface';
-import { TodoService } from '../services/todo.service';
+import { TaskI } from '../../models/task.interface';
+import { TodoService } from '../../services/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController  } from '@ionic/angular';
 
