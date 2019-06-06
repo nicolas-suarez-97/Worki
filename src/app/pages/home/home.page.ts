@@ -10,9 +10,10 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-
+  imgUrl: string ="assets/logo2.png";
   users: UserI[];
   userId=null;
+  createdCode = null;
   user: UserI = {
     name: "",
     document: "",
@@ -29,6 +30,7 @@ export class HomePage implements OnInit{
       this.userId = this.route.snapshot.params['id']; 
       if(this.userId){
         this.loadUser();
+        this.createQR();
       }
   }
 
@@ -49,11 +51,23 @@ export class HomePage implements OnInit{
       console.log(res);
       this.user = res;
     })
-    console.log(this.user.name);
+    console.log(this.user.name);    
+  }
+
+  createQR(){
+    this.createdCode = this.userId;
   }
 
   pushQr(){      
     this.router.navigateByUrl(`/qr-code`); 
+  }
+
+  modifyInfo(){
+    this.router.navigateByUrl(`/qr-code`); 
+  }
+
+  logOut(){
+    this.router.navigateByUrl(`/login`); 
   }
 
   qrCode(){

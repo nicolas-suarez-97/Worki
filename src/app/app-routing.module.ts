@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule'},
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'registry', loadChildren: './pages/registry/registry.module#RegistryPageModule' }  
+  { path: 'registry', loadChildren: './pages/registry/registry.module#RegistryPageModule' },   { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' },
+  { path: 'coordinator', loadChildren: './coordinator/coordinator.module#CoordinatorPageModule' }
+ 
 ];
 
 @NgModule({

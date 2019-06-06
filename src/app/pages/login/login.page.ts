@@ -47,9 +47,14 @@ export class LoginPage implements OnInit {
       if(this.user == u.name){
         userExist = true;
         if(this.pws == u.password){
-          pass=true;
+          pass=true;          
           loading.dismiss();
-          this.routeHomePage(u.id);
+          if(u.type=="admin"){
+            console.log("admin");
+            this.routeAdminPage(u.id);
+          }else{
+            this.routeHomePage(u.id);
+          }          
         }                  
       }              
     }
@@ -67,6 +72,10 @@ export class LoginPage implements OnInit {
   }
 
   routeHomePage(userId:string){
+    this.router.navigate([`/home`,{id:userId}]); 
+  }
+  
+  routeAdminPage(userId:string){
     this.router.navigate([`/home`,{id:userId}]); 
   }
   

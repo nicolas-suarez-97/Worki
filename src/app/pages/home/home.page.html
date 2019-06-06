@@ -1,14 +1,45 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      WORKI
+      <ion-img class="logo" [src]="imgUrl" ></ion-img>
     </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="logOut()"> 
+        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   
+  <ion-title style="text-align: center">PERFIL</ion-title>
 
+  <ion-item lines="none">
+    <ion-label position="stacked">Nombre: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.name" readonly></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Documento: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.document" readonly></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Telefono: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.cellphone" readonly></ion-input>
+  </ion-item>  
+  <br/>
+  <ion-card *ngIf="createdCode" class="qrCode">
+    <ngx-qrcode [(qrc-value)]="createdCode" ></ngx-qrcode>
+  </ion-card>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="modifyInfo()">
+        <ion-icon name="create"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   <!--  
   <ion-list>
     <ion-item-sliding *ngFor="let todo of todos">
@@ -41,31 +72,11 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>-->
-  <ion-item>
-    <ion-label position="stacked">Nombre: </ion-label>
-    <ion-input [(ngModel)]="user.name"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Documento: </ion-label>
-    <ion-input [(ngModel)]="user.document"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Telefono: </ion-label>
-    <ion-input [(ngModel)]="user.cellphone"></ion-input>
-  </ion-item>
-
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="qrCode()">
-      <ion-icon name="qr-scanner"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  
 </ion-content>
 
-<ion-footer>
+<!--<ion-footer>
   <ion-button expand="block" (click)="pushQr()" >
     Código QR
   </ion-button>
-</ion-footer>
+</ion-footer>-->

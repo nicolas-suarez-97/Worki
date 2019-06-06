@@ -3,5 +3,6 @@ export interface UserI{
     name: string,
     document: string,
     cellphone: string,
-    password: string
+    password: string,
+    type?: string
 }
