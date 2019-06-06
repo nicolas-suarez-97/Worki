@@ -24,7 +24,7 @@ export class HomePage implements OnInit{
     private router: Router,     
     private userService: UsersService,
     private route: ActivatedRoute,
-    private loadingController:LoadingController,  
+    private loadingController:LoadingController
     )
     {               
       this.userId = this.route.snapshot.params['id']; 
@@ -63,7 +63,7 @@ export class HomePage implements OnInit{
   }
 
   modifyInfo(){
-    this.router.navigateByUrl(`/qr-code`); 
+    this.router.navigate([`/edit-profile`,{id:this.userId}]); 
   }
 
   logOut(){

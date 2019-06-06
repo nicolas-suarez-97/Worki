@@ -53,7 +53,11 @@ export class LoginPage implements OnInit {
             console.log("admin");
             this.routeAdminPage(u.id);
           }else{
-            this.routeHomePage(u.id);
+            if(u.type=="coordinator"){
+              this.routeCoordinatorPage(u.id);
+            }else{
+              this.routeHomePage(u.id);
+            }
           }          
         }                  
       }              
@@ -68,7 +72,6 @@ export class LoginPage implements OnInit {
       }
     }
     loading.dismiss();
-
   }
 
   routeHomePage(userId:string){
@@ -76,7 +79,11 @@ export class LoginPage implements OnInit {
   }
   
   routeAdminPage(userId:string){
-    this.router.navigate([`/home`,{id:userId}]); 
+    this.router.navigate([`/admin`,{id:userId}]); 
+  }
+
+  routeCoordinatorPage(userId:string){
+    this.router.navigate([`/coordinator`,{id:userId}]); 
   }
   
   async presentToast(message:string) {

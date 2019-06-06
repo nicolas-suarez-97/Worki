@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        <ion-img class="logo" [src]="imgUrl" ></ion-img>
+      </ion-title>
+      <ion-title slot="primary">Coordinador</ion-title>
+  
+      <ion-buttons slot="primary">
+        <ion-button (click)="logOut()"> 
+          <ion-icon name="log-out" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="scannedCode">        
+    <ion-card-content>
+      Result from Scan: {{ scannedCode }} 
+    </ion-card-content>
+  </ion-card>
+  <ion-buttons>
+    <ion-button (click)="pushQr()">Qr Menu</ion-button>
+  </ion-buttons>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="scanCode()">
+    <ion-icon name="qr-scanner"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

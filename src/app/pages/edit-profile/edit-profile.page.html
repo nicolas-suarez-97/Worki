@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Editar perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-label position="stacked">Nombre: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.name" ></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Documento: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.document" ></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Telefono: </ion-label>
+    <ion-input class="input" [(ngModel)]="user.cellphone" ></ion-input>
+  </ion-item>  
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" (click)="saveUser()">Guardar</ion-button>  
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="danger" fill="outline" (click)="onRemove()">Eliminar Perfil</ion-button>  
+    </ion-col>
+  </ion-row>
+</ion-footer>
