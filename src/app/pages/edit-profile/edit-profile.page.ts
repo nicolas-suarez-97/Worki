@@ -24,14 +24,13 @@ export class EditProfilePage implements OnInit {
     private alertController:AlertController,
     private toastController:ToastController,
     private loadingController:LoadingController
-  ) { 
-    this.userId = this.route.snapshot.params['id']; 
-      if(this.userId){
-        this.loadUser();        
-      }
-  }
+  ) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.params['id']; 
+    if(this.userId){
+      this.loadUser();        
+    }
   }
 
   async loadUser(){      

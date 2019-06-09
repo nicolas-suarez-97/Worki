@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/admin"></ion-back-button>
+      </ion-buttons>        
+      <ion-title>Agregar Evento</ion-title>
+    </ion-toolbar>  
+  </ion-header>
+  
+  <ion-content padding >
+    <ion-title style="text-align: center">Nuevo Evento</ion-title>       
+    <ion-item lines="none">
+      <ion-label position="stacked">Nombre:</ion-label>
+      <ion-input class="input" type="text" required [(ngModel)]="event.name"></ion-input>
+    </ion-item>  
+    <ion-item lines="none">
+        <ion-label position="stacked">Identificador / Número:</ion-label>
+        <ion-input class="input" type="number" required [(ngModel)]="event.number"></ion-input>
+      </ion-item>  
+    <ion-item lines="none">
+      <ion-label>Fecha: (MM/DD/YY)</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"  placeholder="Select Date" [(ngModel)]="event.date"></ion-datetime>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked">Ubicación:</ion-label>
+      <ion-input class="input" type="text" required [(ngModel)]="event.ubication"></ion-input>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-label>Coordinador:</ion-label>
+      <ion-select placeholder="Seleccione uno" [(ngModel)]="event.coordinatorId">                
+        <ion-select-option value="{{coord.id}}" *ngFor="let coord of coordinators">{{coord.name}}</ion-select-option>        
+      </ion-select>
+    </ion-item>
+  </ion-content>
+  
+  <ion-footer>
+      <ion-button expand="block" (click)="addEvent()">Crear <ion-icon name="add"></ion-icon></ion-button>  
+  </ion-footer>
+  

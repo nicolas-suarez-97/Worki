@@ -14,7 +14,7 @@ export class UsersService {
   private usersCollection: AngularFirestoreCollection<UserI>;
   private users: Observable<UserI[]>;
 
-  constructor(db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) { 
     this.usersCollection = db.collection<UserI>('users');
     this.users = this.usersCollection.snapshotChanges().pipe(map(
       actions => {
@@ -46,5 +46,21 @@ export class UsersService {
 
   deleteUser(id: string){
     return this.usersCollection.doc(id).delete();
+  }
+  
+  getCoordinators(company:string){
+    var Collection: AngularFirestoreCollection<UserI>;
+    var coord: Observable<UserI[]>;
+    Collection = this.db.collection<UserI>('users', ref => ref.where('company', '==',company).where('type','==','coordinator'));
+    coord = Collection.snapshotChanges().pipe(map(
+      actions => {
+        return actions.map( a=> {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      }
+    ));
+    return coord;
   }
 }

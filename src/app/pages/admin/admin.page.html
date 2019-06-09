@@ -14,5 +14,44 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <br>
+  <ion-title style="text-align: center">Eventos</ion-title>
+
+  <ion-list>           
+    <ion-card *ngFor="let event of events" (click)="editEvent(event.id)">
+      <ion-card-header>
+        <ion-card-title style="text-transform: uppercase; text-align: center">{{event.name}}</ion-card-title>
+        <ion-card-subtitle style="text-align: center">
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"  readonly [(ngModel)]="event.date"></ion-datetime>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>        
+        <ion-row>
+          <ion-col>Ubicación: {{event.ubication}}</ion-col>
+          <ion-col># {{event.providers.length}} </ion-col>
+        </ion-row>       
+      </ion-card-content>
+      <ion-card-content>
+        Coordinador: {{event.coordinatorName}}        
+      </ion-card-content>
+    </ion-card>    
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="person-add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="calendar" (click)="routeAddEventPage()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>    
+  </ion-fab>
 
 </ion-content>

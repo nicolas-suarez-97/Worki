@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TodoDetailsPage } from './todo-details.page';
+import { MainEventPagePage } from './main-event-page.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TodoDetailsPage
+    component: MainEventPagePage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TodoDetailsPage]
+  declarations: [MainEventPagePage]
 })
-export class TodoDetailsPageModule {}
+export class MainEventPagePageModule {}

@@ -4,5 +4,6 @@ export interface UserI{
     document: string,
     cellphone: string,
     password: string,
-    type?: string
+    type?: string,
+    company?:string
 }

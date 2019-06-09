@@ -14,18 +14,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="scannedCode">        
-    <ion-card-content>
-      Result from Scan: {{ scannedCode }} 
-    </ion-card-content>
-  </ion-card>
-  <ion-buttons>
-    <ion-button (click)="pushQr()">Qr Menu</ion-button>
-  </ion-buttons>
+    
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+      
+  <ion-list>           
+    <ion-card *ngFor="let event of events" (click)="mainEvent(event.id)">
+      <ion-card-header>
+        <ion-card-title style="text-transform: uppercase; text-align: center">{{event.name}}</ion-card-title>
+        <ion-card-subtitle style="text-align: center">
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"  readonly [(ngModel)]="event.date"></ion-datetime> 
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>Ubicación: {{event.ubication}}</ion-col>
+          <ion-col># {{event.providers.length}} </ion-col>
+        </ion-row>          
+      </ion-card-content>
+      <ion-card-content>
+        Coordinador: {{event.coordinatorName}}        
+      </ion-card-content>
+    </ion-card>    
+  </ion-list> 
 </ion-content>
-
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="scanCode()">
-    <ion-icon name="qr-scanner"></ion-icon>
-  </ion-fab-button>
-</ion-fab>

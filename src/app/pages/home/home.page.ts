@@ -26,15 +26,14 @@ export class HomePage implements OnInit{
     private route: ActivatedRoute,
     private loadingController:LoadingController
     )
-    {               
-      this.userId = this.route.snapshot.params['id']; 
-      if(this.userId){
-        this.loadUser();
-        this.createQR();
-      }
-  }
+    {}
 
   ngOnInit(){     
+    this.userId = this.route.snapshot.params['id']; 
+    if(this.userId){
+      this.loadUser();
+      this.createQR();
+    }
   }
   
   async loadUser(){      

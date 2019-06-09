@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserI } from '../../models/user.interface';
 import { UsersService } from '../../services/users.service';
@@ -9,25 +9,32 @@ import { LoadingController, ToastController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
   imgUrl = "assets/Logo.png";
   user:string = "";
   pws: string = "";
   users: UserI[];
+  subscription=null;
   constructor(
     private router: Router, 
     private userService:UsersService,     
     private loadingController: LoadingController,
     private toastController: ToastController
-    ) {   
-      
-    this.userService.getUsers().subscribe(res => {
-      this.users = res
-    });        
+    ) {}
+
+  ngOnInit() {   
+    this.loadData();
   }
 
-  ngOnInit() {
-    
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
+  async loadData(){
+    this.subscription = this.userService.getUsers().subscribe(res => {
+      this.users = res;
+      console.log(res);
+    });  
   }
 
   async login(){  
@@ -35,10 +42,7 @@ export class LoginPage implements OnInit {
       message: 'Ingresando...',
       duration: 1000
     });
-    await loading.present();
-    this.userService.getUsers().subscribe(res => {
-      this.users = res
-    });  
+    await loading.present();   
     
     var userExist = false;
     var pass = false;
@@ -51,11 +55,14 @@ export class LoginPage implements OnInit {
           loading.dismiss();
           if(u.type=="admin"){
             console.log("admin");
+            this.subscription.unsubscribe();
             this.routeAdminPage(u.id);
           }else{
             if(u.type=="coordinator"){
+              this.subscription.unsubscribe();
               this.routeCoordinatorPage(u.id);
-            }else{
+            }else{              
+              this.subscription.unsubscribe();
               this.routeHomePage(u.id);
             }
           }          
