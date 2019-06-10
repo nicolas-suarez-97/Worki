@@ -8,26 +8,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >      
-  <ion-toolbar>
-      <ion-title style="text-transform: capitalize">
-          <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" readonly placeholder="Select Date" [(ngModel)]="event.date"></ion-datetime>
-      </ion-title>    
-      <ion-title slot="end">
-          <ion-input class="input" type="text" required [(ngModel)]="event.ubication" readonly></ion-input>
-      </ion-title>  
-  </ion-toolbar>
+<ion-content padding>
+  <div style="display: flex; justify-content: center">
+    <ion-chip color="primary" outline="true" style="text-align: center">
+        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" readonly placeholder="Select Date" [(ngModel)]="event.date"></ion-datetime>
+    </ion-chip>
+
+    <ion-chip color="primary" style="text-align: center" outline="true">
+      <ion-input type="text" required [(ngModel)]="event.ubication" readonly></ion-input>
+    </ion-chip>
   
-  <ion-title style="text-align: center">Proveedores - # {{quantity}}</ion-title>  
+    <ion-chip color="danger" outline="true" style="text-align: center;">
+      <ion-label ># {{quantity}}</ion-label>
+    </ion-chip>
+  </div>
+  
+  <ion-title style="text-align: center">Proveedores</ion-title>  
+  
   <ion-item-sliding *ngFor="let user of event.providers">
-    <ion-item >   
+    <ion-item >  
+      <ion-avatar slot="start">
+        <img src="assets/profilePicture.png">
+      </ion-avatar>
+          
       <ion-label>
         <h2 style="text-transform: capitalize">{{user.name}}</h2>
+
         <p>Doc: {{user.document}} - Cel: {{user.cellphone}}</p>      
       </ion-label>   
     </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option color="danger" expandable (click)="onRemoveUser(user.id)">
+    <ion-item-options side="start">
+      <ion-item-option color="danger" (click)="onRemoveUser(user.id)">
         Borrar
       </ion-item-option>
     </ion-item-options>

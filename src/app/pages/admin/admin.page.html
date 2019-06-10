@@ -18,24 +18,30 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <br>
-  <ion-title style="text-align: center">Eventos</ion-title>
+  <ion-title style="text-align: center">EVENTOS</ion-title>
 
   <ion-list>           
     <ion-card *ngFor="let event of events" (click)="editEvent(event.id)">
       <ion-card-header>
-        <ion-card-title style="text-transform: uppercase; text-align: center">{{event.name}}</ion-card-title>
+        <ion-card-title style="text-transform: uppercase;text-align: center">
+          {{event.name}} - # {{event.number}}        
+        </ion-card-title>
         <ion-card-subtitle style="text-align: center">
-            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"  readonly [(ngModel)]="event.date"></ion-datetime>
+          <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"  readonly [(ngModel)]="event.date"></ion-datetime>                                     
         </ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content>        
-        <ion-row>
-          <ion-col>Ubicación: {{event.ubication}}</ion-col>
-          <ion-col># {{event.providers.length}} </ion-col>
-        </ion-row>       
-      </ion-card-content>
-      <ion-card-content>
-        Coordinador: {{event.coordinatorName}}        
+      <ion-card-content>      
+        <div style="display: flex; justify-content: space-around">
+          <ion-chip color="primary" outline="true">
+              Ubicación: {{event.ubication}}
+          </ion-chip>
+          <ion-chip color="primary" outline="true">
+            Coordinador: {{event.coordinatorName}}  
+          </ion-chip>     
+          <ion-chip color="danger" outline="true">
+              # {{event.providers.length}}
+          </ion-chip>
+        </div>  
       </ion-card-content>
     </ion-card>    
   </ion-list>

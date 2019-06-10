@@ -32,17 +32,18 @@
     </ion-select>
   </ion-item>
   <br>
-  <ion-item lines="full"></ion-item>
-  <br>
-  <ion-title style="text-align: center">Proveedores - # {{quantity}}</ion-title>  
+  <ion-title style="text-align: center">Proveedores - <ion-chip color="danger" outline="true"># {{quantity}}</ion-chip></ion-title>  
   <ion-item-sliding *ngFor="let user of event.providers">
     <ion-item >   
+      <ion-avatar slot="start">
+        <img src="assets/profilePicture.png">
+      </ion-avatar>
       <ion-label>
         <h2 style="text-transform: capitalize">{{user.name}}</h2>
         <p>Doc: {{user.document}} - Cel: {{user.cellphone}}</p>      
       </ion-label>   
     </ion-item>
-    <ion-item-options side="end">
+    <ion-item-options side="start">
       <ion-item-option color="danger" expandable (click)="onRemoveUser(user.id)">
         Borrar
       </ion-item-option>
